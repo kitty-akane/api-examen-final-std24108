@@ -6,14 +6,18 @@ info:
 servers: 
   - url: "http://localhost:8000"
 paths: 
-  /ping:
+  /health:
     get: 
-    Response:
+      response:
           '200'
-    description: OK 
-    content: 
+      description: OK 
+      content: 
       text/plain:
-    schema:
+      schema:
         type: string
-        example: pong
-    
+        example: "ok"
+  /phones:
+    post:
+    response: 
+        '201'
+    description: created
