@@ -31,5 +31,9 @@ def phone(new_phones: List[Phone]):
         phone_stocking.append(phone)
     return phone_stocking, Response(content="created", status_code=201)
 @app.get("/phones")
-def phones():
+def get_phones():
+    return phone_stocking
 
+@app.get("/phones/{id}")
+def get_phone_by_id():
+    return Phone
