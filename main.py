@@ -1,3 +1,4 @@
+from numbers import Number
 from typing import List
 from fastapi import FastAPI, Response
 from fastapi.responses import PlainTextResponse, HTMLResponse
@@ -15,8 +16,8 @@ def health():
 
 phone_stocking = []
 class Characteristic(BaseModel):
-    ram_memory: int
-    rom_memory: int
+    ram_memory: Number
+    rom_memory: Number
 
 class Phone(BaseModel):
     identifier: str
@@ -25,8 +26,10 @@ class Phone(BaseModel):
     characteristics: Characteristic
 @app.post("/phones")
 
-def phones(new_phones: List[Phone]):
-    for phones in new_phones:
-        phone_stocking.append(phones)
+def phone(new_phones: List[Phone]):
+    for phone in new_phones:
+        phone_stocking.append(phone)
     return phone_stocking, Response(content="created", status_code=201)
+@app.get("/phones")
+def phones():
 
